@@ -3,7 +3,6 @@
  */
 package com.demo.set.api;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.Scanner;
@@ -22,7 +21,7 @@ public class SpellChecker {
 	public static void main(String[] args) {
 		
 		try {
-			Scanner scanner = new Scanner(new File("C:\\Users\\anshul_goyal\\Documents\\GitHub\\CollectionsAPIDemo\\CollectionsAPI\\src\\main\\resources\\dictionary.properties"));
+			Scanner scanner = new Scanner("dictionary.properties");
 			Set<String> set = new HashSet<String>();
 		
 			while(scanner.hasNext()){
@@ -30,7 +29,7 @@ public class SpellChecker {
 			}
 			scanner.close();
 			
-			scanner = new Scanner(new File("C:\\Users\\anshul_goyal\\Documents\\GitHub\\CollectionsAPIDemo\\CollectionsAPI\\src\\main\\resources\\readText.properties"));
+			scanner = new Scanner("readText.properties");
 			while(scanner.hasNext()){
 				String[] tokens = scanner.nextLine().split("\\W");
 				for(String token : tokens){
@@ -40,7 +39,7 @@ public class SpellChecker {
 				}
 			}
 			scanner.close();
-		}catch (FileNotFoundException ex){
+		}catch (Exception ex){
 			System.out.println("Exception while fetching the file:");
 		}
 	}
