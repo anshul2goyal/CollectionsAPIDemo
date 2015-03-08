@@ -21,16 +21,17 @@ public class SpellChecker {
 	public static void main(String[] args) {
 		
 		try {
-			Scanner scanner = new Scanner("dictionary.properties");
+			Scanner scanner = new Scanner(new SpellChecker().getClass().getResourceAsStream("dictionary.txt"));
 			Set<String> set = new HashSet<String>();
 		
 			while(scanner.hasNext()){
 				set.add(scanner.next());
+				//System.out.println(scanner.next());
 			}
 			scanner.close();
 			
-			scanner = new Scanner("readText.properties");
-			while(scanner.hasNext()){
+			scanner = new Scanner(new SpellChecker().getClass().getResourceAsStream("readText.txt"));
+			while(scanner.hasNextLine()){
 				String[] tokens = scanner.nextLine().split("\\W");
 				for(String token : tokens){
 					if(!token.isEmpty() && !set.contains(token.toLowerCase())){
